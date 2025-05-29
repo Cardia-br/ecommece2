@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+     <link rel="stylesheet" href="{% static 'produtos/register.css' %}">
+    <title>Cadastro</title>
+</head>
+<body>
+    <h1>Cadastro de Usuário</h1>
+
+    {% if form.errors %}
+        <p style="color: red;">Verifique os erros abaixo.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p>Já tem conta? <a href="{% url 'login' %}">Faça login</a></p>
+</body>
+</html>
